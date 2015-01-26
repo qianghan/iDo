@@ -73,7 +73,7 @@ play-multidomain-seed
      └ test
    └ uMan
      └ ...
-   └ uModel
+   └ uCommon
      └ ...
 ```
 
