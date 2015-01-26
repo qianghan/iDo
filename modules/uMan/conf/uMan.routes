@@ -1,0 +1,12 @@
+# uMan Routes
+# This file defines uMan application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /							controllers.uMan.Application.index
+
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.uMan.Assets.versioned(path="/public", file: Asset)
+
