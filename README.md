@@ -27,7 +27,7 @@ We have the following objectives:
 This is the basic structure of the whole project:
 
 ```
-play-multidomain-seed
+uServices
  └ build.sbt
  └ app
    └ Global.scala
