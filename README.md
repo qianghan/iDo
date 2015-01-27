@@ -1,4 +1,4 @@
-## uDo Platform [Play 2.3 - Scala]
+## uServices Platform [Play 2.3 - Scala]
 
 This is a multiproject domain that includes the following subprojects:
 
