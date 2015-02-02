@@ -38,10 +38,11 @@ object Common {
 		ws,
 		"org.webjars" % "jquery" % "2.1.1",
 		"org.webjars" % "bootstrap" % "3.2.0",
-		"org.webjars" % "requirejs" % "2.1.14-1"
+		"org.webjars" % "requirejs" % "2.1.14-1",
 		// Add here more common dependencies:
 		// jdbc,
 		// anorm,
 		// ...
+    "net.liftweb" %% "lift-json" % "2.6"
 	)
 }

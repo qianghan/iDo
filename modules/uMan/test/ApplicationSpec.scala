@@ -32,5 +32,16 @@ class ApplicationSpec extends Specification {
 				contentAsString(index) must contain ("uMan")
 			}
 		}
+
+    "create account" in {
+			running(FakeApplication(path = modulePath)) {
+				val index = route(FakeRequest(POST, "/account")).get
+        
+				status(index) must equalTo(OK)
+				contentType(index) must beSome.which(_ == "application/json")
+				contentAsString(index) must contain ("true")
+			}
+		}
+
 	}
 }

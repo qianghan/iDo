@@ -4,6 +4,7 @@
 
 # Home page
 GET     /							controllers.uMan.Application.index
+POST    /account      controllers.uMan.Application.createAccount
 
 
 
