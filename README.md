@@ -1,4 +1,4 @@
-## uDo Platform [Play 2.3 - Scala]
+# uDo Platform - v0.2.1
 
 This is a multiproject domain that includes the following subprojects:
 
