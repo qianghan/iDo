@@ -11,4 +11,12 @@ object Application extends Controller {
 		Ok(views.html.uMan.index("Hello! I'm uMan!"))
 	}
 
+
+  /**
+  1. CRUD - account
+  2. CRUD - uShip settings
+  3. CR - bill
+  */
+
+  
 }

@@ -4,6 +4,8 @@
 
 # Delegate routes to sub-projects
 
+->  / uCommon.Routes
+
 ->  / uMan.Routes
 
 ->  / uShip.Routes
