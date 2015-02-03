@@ -1,5 +1,5 @@
 # Docker Container created for uService platform
-RUN echo 'we are building uService Platform'
+
 
 FROM dockerfile/java:oracle-java8
 MAINTAINER Qiang Han <qiang.han@machool.com>
