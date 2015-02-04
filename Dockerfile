@@ -1,7 +1,7 @@
 # Docker Container created for uService platform
 
 
-FROM dockerfile/java:oracle-java8
+FROM machool/ucompute
 MAINTAINER Qiang Han <qiang.han@machool.com>
 
 RUN apt-get update
@@ -32,7 +32,13 @@ EXPOSE 8888 9000
 
 ADD . /code/src/
 WORKDIR /code/src/
+ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
+RUN activator compile 
+#RUN activator "run 9000"
 
-CMD ["activator",  "run 9000"]
+WORKDIR /
+
+## entrypoint
+CMD ["/bin/bash", "-c", "/launch.sh"]
 
 #CMD ["/home/activator-latest/activator","ui","-Dhttp.address=0.0.0.0","-Dorg.slf4j.simpleLogger.defaultLogLevel=trace"]
