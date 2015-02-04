@@ -1,7 +1,7 @@
 # Docker Container created for uService platform
 
 
-FROM machool/ucompute
+FROM machool/neo4j
 MAINTAINER Qiang Han <qiang.han@machool.com>
 
 RUN apt-get update
