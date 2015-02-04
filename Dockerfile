@@ -28,7 +28,7 @@ ENV PATH $PATH:/home/activator-latest
 
 
 VOLUME ["/home/activator-latest"]
-EXPOSE 8888 9000
+EXPOSE 8888 9000 7474
 
 ADD . /code/src/
 WORKDIR /code/src/
