@@ -2,17 +2,19 @@ import play.api._
 import play.api.mvc._
 import play.api.mvc.Results._
 import scala.concurrent.Future
+import play.libs.F.Promise;
+import play.api.libs.json.Json
 
 object GlobalUMan extends GlobalSettings {	
 	
 	// 404 - page not found error
 	override def onHandlerNotFound (request: RequestHeader) = Future.successful(
-		NotFound(views.html.uMan.errors.onHandlerNotFound(request))
+    NotFound(Json.obj("error" ->  "URL not found","code" -> "404", "message"->request.toString()))
 	)
 	
 	// 500 - internal server error
 	override def onError (request: RequestHeader, throwable: Throwable) = Future.successful(
-		InternalServerError(views.html.uMan.errors.onError(throwable))
+		InternalServerError(Json.obj("error" ->  "Internal server error","code" -> "500", "message"->throwable.toString()))
 	)
 	
 	// called when a route is found, but it was not possible to bind the request parameters

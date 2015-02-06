@@ -9,7 +9,7 @@ import play.api.libs.json.Json
 object Application extends Controller {
 
 	def index = Action { implicit request =>
-		Ok(views.html.uMan.index("Hello! I'm uMan!"))
+		Ok(Json.obj("code" -> "200", "message"->"Hello! I'm uMan!"))
 	}
 
   def createAccount = Action { request =>
