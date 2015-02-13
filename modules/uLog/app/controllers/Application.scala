@@ -15,7 +15,8 @@ object Application extends Controller {
     implicit val LogBodyReads: Reads[LogBody] = (
       (JsPath \ "url").read[String] and  
       (JsPath \ "message").read[String] and 
-      (JsPath \ "type").read[String] 
+      (JsPath \ "type").read[String] and
+      (JsPath \ "account").read[String] 
    )(LogBody.apply _)
  
   

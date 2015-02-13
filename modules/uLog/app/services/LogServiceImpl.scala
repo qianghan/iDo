@@ -30,23 +30,27 @@ class LogServiceImpl extends LogService{
             if (msg.logType == "debug"){
               uShipLogger.debug("[source url]" + msg.source)
               uShipLogger.debug("[message]" + msg.msg)
-              uShipLogger.debug("I am here")
+              uShipLogger.debug("[account]" + msg.account)
               
             }else if (msg.logType == "error"){
               uShipLogger.error("[source url]" + msg.source)
               uShipLogger.error("[message]" + msg.msg)
+              uShipLogger.debug("[account]" + msg.account)
               
             }else if (msg.logType == "info"){
               uShipLogger.info("[source url]" + msg.source)
               uShipLogger.info("[message]" + msg.msg)
+              uShipLogger.debug("[account]" + msg.account)
               
             }else if (msg.logType == "warn"){
               uShipLogger.warn("[source url]" + msg.source)
               uShipLogger.warn("[message]" + msg.msg)
+              uShipLogger.debug("[account]" + msg.account)
             }else {
               uShipLogger.error("[unknown log type]" + msg.logType)
               uShipLogger.error("[source url]" + msg.source)
               uShipLogger.error("[message]" + msg.msg)
+              uShipLogger.debug("[account]" + msg.account)
               
               return BadRequest(Json.obj("status" ->"Error", "message" -> "logged as error due to unknown log type"))
    

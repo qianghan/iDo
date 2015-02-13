@@ -38,7 +38,8 @@ object uLogSpec extends PlaySpecification with Results {
           val request = FakeRequest(POST, "/logger").withJsonBody(Json.parse("""{ 
                                                                                   "url": "/uShipApp/components/uMan/home.html",
                                                                                   "message": "log type is debug.",
-                                                                                  "type":"debug"
+                                                                                  "type":"debug",
+                                                                                  "account":"Machool"
                                                                              }"""))
                                                                              
           val logger = route(request).get
@@ -55,7 +56,8 @@ object uLogSpec extends PlaySpecification with Results {
           val request = FakeRequest(POST, "/logger").withJsonBody(Json.parse("""{ 
                                                                                   "url": "/uShipApp/components/uMan/home.html",
                                                                                   "message": "log type is info",
-                                                                                  "type":"info"
+                                                                                  "type":"info",
+                                                                                  "account":"Machool"
                                                                              }"""))
                                                                              
           val logger = route(request).get
@@ -72,7 +74,8 @@ object uLogSpec extends PlaySpecification with Results {
           val request = FakeRequest(POST, "/logger").withJsonBody(Json.parse("""{ 
                                                                                   "url": "/uShipApp/components/uMan/home.html",
                                                                                   "message": "log type is warn",
-                                                                                  "type":"warn"
+                                                                                  "type":"warn",
+                                                                                  "account":"Machool"
                                                                              }"""))
                                                                              
           val logger = route(request).get
@@ -89,7 +92,8 @@ object uLogSpec extends PlaySpecification with Results {
           val request = FakeRequest(POST, "/logger").withJsonBody(Json.parse("""{ 
                                                                                   "url": "/uShipApp/components/uMan/home.html",
                                                                                   "message": "log type is error",
-                                                                                  "type":"error"
+                                                                                  "type":"error",
+                                                                                  "account":"Machool"
                                                                              }"""))
                                                                              
           val logger = route(request).get
@@ -117,7 +121,8 @@ object uLogSpec extends PlaySpecification with Results {
           val request = FakeRequest(POST, "/logger").withJsonBody(Json.parse("""{ 
                                                                                   "url": "/uShipApp/components/uMan/home.html",
                                                                                   "message": "log type is unknown",
-                                                                                  "type":"unknown"
+                                                                                  "type":"unknown",
+                                                                                  "account":"Machool"
                                                                              }"""))
                                                                              
           val logger = route(request).get
