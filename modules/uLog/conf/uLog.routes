@@ -1,0 +1,9 @@
+# uLog Routes
+# This file defines uLog application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+POST     /logger						controllers.Application.saveLog
+
+
+

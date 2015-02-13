@@ -1,0 +1,29 @@
+package controllers
+
+import models._
+import play.api._
+import play.api.mvc._
+import play.api.mvc.Results._
+import play.api.libs.json._
+import play.api.libs.functional.syntax._
+import play.api.libs.json.Reads._ 
+import services.LogServiceImpl
+import domain.log.LogBody
+
+object Application extends Controller {
+  
+    implicit val LogBodyReads: Reads[LogBody] = (
+      (JsPath \ "url").read[String] and  
+      (JsPath \ "message").read[String] and 
+      (JsPath \ "type").read[String] 
+   )(LogBody.apply _)
+ 
+  
+	
+	def saveLog = Action(BodyParsers.parse.json) {request =>
+        val logbody = request.body.validate[LogBody]
+        val logService = new LogServiceImpl()
+        logService.saveLog(logbody)
+  }
+
+}

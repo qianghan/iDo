@@ -11,7 +11,7 @@ object Common {
 		name := theName,
 		organization := "com.machool",
 		version := "0.2.1",
-		scalaVersion := "2.11.1",
+		scalaVersion := "2.10.4",
 		doc in Compile <<= target.map(_ / "none"),
 		scalacOptions ++= Seq("-feature", "-deprecation", "-unchecked", "-language:reflectiveCalls")
 	)
@@ -38,6 +38,8 @@ object Common {
 		// jdbc,
 		// anorm,
 		// ...
-    "net.liftweb" %% "lift-json" % "2.6"
+    "net.liftweb" %% "lift-json" % "2.6",
+	 "org.specs2" %% "specs2-core" % "2.3.12" % "test",
+	 "org.mockito" % "mockito-core" % "1.9.5" % "test"
 	)
 }
