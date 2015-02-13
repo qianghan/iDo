@@ -1,5 +1,5 @@
 # uDo Platform - v0.2.2
-[Change List]
+##[Change List for 0.2.2]
 * Add uLog module to deal with remoting client logging
 * Add neo4j plug-in 1.4.1 to uCommon
 * Remove all Views that are necessary for uService
