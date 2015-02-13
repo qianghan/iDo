@@ -1,10 +1,15 @@
-# uDo Platform - v0.2.1
+# uDo Platform - v0.2.2
+[Change List]
+* Add uLog module to deal with remoting client logging
+* Add neo4j plug-in 1.4.1 to uCommon
+* Remove all Views that are necessary for uService
 
 This is a multiproject domain that includes the following subprojects:
 
 * `uShip.machool.com`: Shipping service
 * `uMan.machool.com`: User Management service
 * `uCommon.machool.com` : Domain model & common library
+* `uLog.machool.com` : Remoting Logging for uShipApp
 
 These services will be isolated in one domain and to be managed seperately (with different PIDs, different ports, different resources…).
 
