@@ -16,7 +16,9 @@ object Application extends Controller {
       (JsPath \ "url").read[String] and  
       (JsPath \ "message").read[String] and 
       (JsPath \ "type").read[String] and
-      (JsPath \ "account").read[String] 
+      (JsPath \ "account").read[String] and 
+      (JsPath \ "stackTrace").read[String]  and 
+      (JsPath \ "cause").read[String]
    )(LogBody.apply _)
  
   

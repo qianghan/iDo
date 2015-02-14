@@ -46,6 +46,12 @@ class LogServiceImpl extends LogService{
               uShipLogger.warn("[source url]" + msg.source)
               uShipLogger.warn("[message]" + msg.msg)
               uShipLogger.debug("[account]" + msg.account)
+            }else if (msg.logType == "exception"){
+              uShipLogger.error("[source url]" + msg.source)
+              uShipLogger.error("[message]" + msg.msg)
+              uShipLogger.error("[stack trace]" + msg.stackTrace)
+              uShipLogger.error("[cause]" + msg.cause)
+              uShipLogger.error("[account]" + msg.account)
             }else {
               uShipLogger.error("[unknown log type]" + msg.logType)
               uShipLogger.error("[source url]" + msg.source)
