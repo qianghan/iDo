@@ -18,41 +18,28 @@ object Common {
 		scalacOptions ++= Seq("-feature", "-deprecation", "-unchecked", "-language:reflectiveCalls"),
 		resolvers += "Neo4j" at "http://m2.neo4j.org/content/repositories/releases/"
 	)
-<<<<<<< HEAD
 
 	// Settings for the app, i.e. the root project
 	val appSettings = settings(appName)
-	
-=======
-  
-	// Settings for the app, i.e. the root project
-	val appSettings = settings(appName)
-  
->>>>>>> b5a77472a4dd360bc34028b0112ba48746b54360
+
 	// Settings for every module, i.e. for every subproject
-  
 	def moduleSettings (module: String) = settings(module) ++: Seq(
 		javaOptions in Test += s"-Dconfig.resource=application.conf"
 	)
-<<<<<<< HEAD
-	
-=======
-  
->>>>>>> b5a77472a4dd360bc34028b0112ba48746b54360
+
 	// Settings for every service, i.e. for uShip and uMan subprojects
 	def serviceSettings (module: String) = moduleSettings(module) ++: Seq(
 		
 	)
-	
+
 	val commonDependencies = Seq(
 		cache,
 		ws,
-	
+
 		// Add here more common dependencies:
 		// jdbc,
 		// anorm,
 		// ...
-<<<<<<< HEAD
     	"net.liftweb" %% "lift-json" % "2.6",
       javaCore,
       "com.sun.jersey" % "jersey-core" % "1.19",
@@ -70,12 +57,9 @@ object Common {
 			ExclusionRule(organization = "org.neo4j", name="neo4j-kernel")
 		),
 		"org.neo4j" % "neo4j-kernel" % "1.9.7",
-		"org.neo4j" % "neo4j-rest-graphdb" % "2.0.0-M06"
-=======
-    "net.liftweb" %% "lift-json" % "2.6",
+		"org.neo4j" % "neo4j-rest-graphdb" % "2.0.0-M06",
 	 "org.specs2" %% "specs2-core" % "2.3.12" % "test",
 	 "org.mockito" % "mockito-core" % "1.9.5" % "test"
->>>>>>> b5a77472a4dd360bc34028b0112ba48746b54360
 	)
 
 }
