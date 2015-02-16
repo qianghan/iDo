@@ -1,4 +1,4 @@
-Common.serviceSettings("uShip")
+Common.serviceSettings("uLog")
 
 // Add here the specific settings for this module
 

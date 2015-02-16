@@ -9,3 +9,5 @@
 ->  / uMan.Routes
 
 ->  / uShip.Routes
+
+->  / uLog.Routes

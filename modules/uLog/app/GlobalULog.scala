@@ -2,14 +2,13 @@ import play.api._
 import play.api.mvc._
 import play.api.mvc.Results._
 import scala.concurrent.Future
-import play.libs.F.Promise;
 import play.api.libs.json.Json
 
-object GlobalUMan extends GlobalSettings {	
+object GlobalULog extends GlobalSettings {	
 	
 	// 404 - page not found error
 	override def onHandlerNotFound (request: RequestHeader) = Future.successful(
-    NotFound(Json.obj("error" ->  "URL not found","code" -> "404", "message"->request.toString()))
+		NotFound(Json.obj("error" ->  "URL not found","code" -> "404", "message"->request.toString()))
 	)
 	
 	// 500 - internal server error

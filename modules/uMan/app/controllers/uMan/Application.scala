@@ -10,11 +10,17 @@ import scala.collection.mutable.ListBuffer
 
 object Application extends Controller {
 
+<<<<<<< HEAD
   /**
   1. CRUD - account
   2. CRUD - uShip settings
   3. CR - bill
   */
+=======
+	def index = Action { implicit request =>
+		Ok(Json.obj("code" -> "200", "message"->"Hello! I'm uMan!"))
+	}
+>>>>>>> b5a77472a4dd360bc34028b0112ba48746b54360
 
   def index = Action { implicit request =>
     Ok(Json.obj("status" -> "success", "message"->"Hello! I'm uMan!"))
