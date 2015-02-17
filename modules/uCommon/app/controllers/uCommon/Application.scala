@@ -16,6 +16,8 @@ object Application extends Controller {
 
     def allPersons: java.util.List[Person] = userManagementService.getAllPersons()
 
+    //userManagementService.findByEmail("eson.paguia@machool.com");
+
     Ok(Json.obj("status" -> "success", "message"->"Hello! I'm uCommon! %d".format(allPersons.size())))
   }
 

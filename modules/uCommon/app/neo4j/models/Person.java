@@ -25,10 +25,6 @@ public class Person extends AbstractNode {
   @RelatedTo(type = "WORK_FOR", direction = Direction.OUTGOING)
   public @Fetch Company company;
 
-  public Person(String email) {
-    this.email = email;
-  }
-
   public Person(){
   }
 
