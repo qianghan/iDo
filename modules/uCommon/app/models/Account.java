@@ -12,6 +12,10 @@ public class Account {
   @Indexed
   public String username;
 
+  public Account(){
+  }
+
+  @Override
   public String toString() {
     return String.format("User %d %s",id, username);
   }

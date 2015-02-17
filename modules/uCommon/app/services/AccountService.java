@@ -22,9 +22,6 @@ import repositories.AccountRepository;
 public class AccountService {
 
   @Autowired
-  private Neo4jTemplate template;
-
-  @Autowired
   private AccountRepository repo;
 
   public long getCount() {

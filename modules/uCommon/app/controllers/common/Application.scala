@@ -4,14 +4,15 @@ import play.api._
 import play.api.mvc._
 import play.api.libs.json.Json
 
+import controllers._
 import services._
 import models._
-import org.springframework.beans.factory.annotation.Autowired
 
-@org.springframework.stereotype.Controller
-class Application @Autowired() (accountService: AccountService) extends Controller {
+object Application extends Controller {
 
-	def status = Action {
+	def status = Neo4jTransactionAction {
+
+    def accountService: AccountService = Neo4JServiceProvider.get().accountService;
 
     def allAccounts: java.util.List[Account] = accountService.getAllAccounts()
 
