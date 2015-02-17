@@ -16,14 +16,14 @@ public class Person extends AbstractNode {
   @Indexed
   public String email;
 
-  public String fname;
-  public String lname;
+  public String firstName;
+  public String lastName;
   public int age;
   public String sex;
-  public String tel;
+  public String telephone;
 
   @RelatedTo(type = "WORK_FOR", direction = Direction.OUTGOING)
-  public @Fetch Company com;
+  public @Fetch Company company;
 
   public Person(String email) {
     this.email = email;
@@ -34,7 +34,10 @@ public class Person extends AbstractNode {
 
   @Override
   public String toString() {
-    return String.format("Person{email='%s'}", email);
+    return String.format("Person { firstName: '%s', lastName: '%s', email: '%s' }", 
+          firstName,
+          lastName,
+          email);
   }
 
 }

@@ -29,32 +29,30 @@ public class UserManagementService{
   @Autowired
   private CompanyRepository comRepository;
 
-  public Person findByFirstName(String fname){
+  public Person findByFirstName(String firstName){
 
-    Person personx = personRepository.findBySchemaPropertyValue("email", "qiang.han@sap.com");
+    Person person = personRepository.findBySchemaPropertyValue("firstName", firstName);
 
-    System.out.println("xx"+personx);
+    System.out.println("Found >>> " + person);
 
-    //return person;
+    //List<Person> persons = getAllPersons();
 
-    List<Person> persons = getAllPersons();
+    //Person person=null;
 
-    Person person=null;
-
-    for (Person p: persons){
-      System.out.println("[Debug] person's email is: " + p.email);
-      if(p.fname.equals(fname)) { 
-          person=p;
-          System.out.println("[Debug] person is found.");
-      }
-    }
+    //for (Person p: persons){
+      //System.out.println("[Debug] person's email is: " + p.email);
+      //if(p.firstName.equals(fname)) { 
+          //person=p;
+          //System.out.println("[Debug] person is found.");
+      //}
+    //}
 
     return person;
   }
 
   public Person findByEmail(String email){
     Person person = personRepository.findByPropertyValue("email", email);
-    //Logger.info("Person First Name is:" + person.fname);
+    System.out.println("Found >>> " + person);
     return person;
   }
 
