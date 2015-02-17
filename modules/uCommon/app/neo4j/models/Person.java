@@ -13,32 +13,28 @@ import org.springframework.data.neo4j.annotation.RelatedTo;
 @NodeEntity
 public class Person extends AbstractNode {
 
-	@Indexed
-	public String email;
-	
-	public String fname;
-	public String lname;
-	public int age;
-	public String sex;
-	public String tel;
-	
-	@RelatedTo(type = "WORK_FOR", direction = Direction.OUTGOING)
-	public @Fetch Company com;
+  @Indexed
+  public String email;
 
-    
+  public String fname;
+  public String lname;
+  public int age;
+  public String sex;
+  public String tel;
 
-	public Person(String email) {
-		this.email = email;
-	}
-    
-    public Person(){
-    
-    }
+  @RelatedTo(type = "WORK_FOR", direction = Direction.OUTGOING)
+  public @Fetch Company com;
 
-	@Override
-	public String toString() {
-		return String.format("Person{email='%s'}", email);
-	}
+  public Person(String email) {
+    this.email = email;
+  }
 
+  public Person(){
+  }
+
+  @Override
+  public String toString() {
+    return String.format("Person{email='%s'}", email);
+  }
 
 }

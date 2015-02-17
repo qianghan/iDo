@@ -13,21 +13,19 @@ import org.springframework.data.neo4j.annotation.RelatedTo;
 @NodeEntity
 public class Company extends AbstractNode {
 
-	@Indexed
-	public String name;
+  @Indexed
+  public String name;
 
+  public Company(String name) {
+    this.name = name;
+  }
 
-	public Company(String name) {
-		this.name = name;
-	}
+  public Company() {
+  }
 
-	public Company() {
-	}
-
-
-	@Override
-	public String toString() {
-		return String.format("Company{name='%s'}", name);
-	}
+  @Override
+  public String toString() {
+    return String.format("Company{name='%s'}", name);
+  }
 
 }

@@ -1,6 +1,5 @@
 package neo4j.services;
 
-
 import neo4j.models.Person;
 import neo4j.repositories.PersonRepository;
 import neo4j.repositories.CompanyRepository;
@@ -13,7 +12,6 @@ import org.neo4j.kernel.Traversal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -22,48 +20,46 @@ import java.util.List;
 import  play.api.Logger;
 import org.springframework.data.neo4j.conversion.Result;
 
-
 @Service
 public class UserManagementService{
-    @Autowired
-	private PersonRepository personRepository;
-	
-	@Autowired
-	private CompanyRepository comRepository;
-	
-	public Person findByFirstName(String fname){
-	   
-	   Person personx = personRepository.findBySchemaPropertyValue("email", "qiang.han@sap.com");
-	   
-	   System.out.println("xx"+personx);
-	   
-	   //return person;
-	   
-	   List<Person> persons = getAllPersons();
-	   
-	   Person person=null;
-	   
-	   for (Person p: persons){
-	        System.out.println("[Debug] person's email is: " + p.email);
-	        
-	        if(p.fname.equals(fname)) { 
-	            person=p;
-	            System.out.println("[Debug] person is found.");
-	        }
-	   }
-	   
-	   return person;
-	}
-	
-	public Person findByEmail(String email){
-	    
-	   Person person = personRepository.findByPropertyValue("email", email);
-	   //Logger.info("Person First Name is:" + person.fname);
-	   return person;
-	}
-	
-	public List<Person> getAllPersons() {
-		return new ArrayList<Person>(IteratorUtil.asCollection(personRepository.findAll()));
-	}
+
+  @Autowired
+  private PersonRepository personRepository;
+
+  @Autowired
+  private CompanyRepository comRepository;
+
+  public Person findByFirstName(String fname){
+
+    Person personx = personRepository.findBySchemaPropertyValue("email", "qiang.han@sap.com");
+
+    System.out.println("xx"+personx);
+
+    //return person;
+
+    List<Person> persons = getAllPersons();
+
+    Person person=null;
+
+    for (Person p: persons){
+      System.out.println("[Debug] person's email is: " + p.email);
+      if(p.fname.equals(fname)) { 
+          person=p;
+          System.out.println("[Debug] person is found.");
+      }
+    }
+
+    return person;
+  }
+
+  public Person findByEmail(String email){
+    Person person = personRepository.findByPropertyValue("email", email);
+    //Logger.info("Person First Name is:" + person.fname);
+    return person;
+  }
+
+  public List<Person> getAllPersons() {
+    return new ArrayList<Person>(IteratorUtil.asCollection(personRepository.findAll()));
+  }
 
 }

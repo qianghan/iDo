@@ -2,28 +2,29 @@ Common.moduleSettings("uCommon")
 
 // Add here the specific settings for this module
 
-scalaVersion := "2.10.4"
-
-//resolvers += "tuxburner.github.io" at "http://tuxburner.github.io/repo"
-//resolvers += "Local Maven Repository" at "file://"+Path.userHome.absolutePath+"/.m2/repository"
-//resolvers += "Neo4j Maven Repo" at "http://m2.neo4j.org/releases"
-
 resolvers ++= Seq(
-    "tuxburner.github.io" at "http://tuxburner.github.io/repo",
-    "Local Maven Repository" at "file://"+Path.userHome.absolutePath+"/.m2/repository",
-    "Neo4j Maven Repo" at "http://m2.neo4j.org/releases"
-//  "anormcypher" at "http://repo.anormcypher.org/",
-//  "Typesafe Releases" at "http://repo.typesafe.com/typesafe/releases/"
+  "Typesafe Releases" at "http://repo.typesafe.com/typesafe/releases/",
+  "Spring releases" at "http://repo.springsource.org/release",
+  "Spring milestones" at "http://repo.spring.io/milestone",
+  "Neo4j" at "http://m2.neo4j.org/releases/",
+  "Local Maven" at "file://" + Path.userHome.absolutePath + "/.m2/repository",
+  "tuxburner.github.io" at "http://tuxburner.github.io/repo"
 )
 
+scalaVersion := "2.10.4"
+
 libraryDependencies ++= Common.commonDependencies ++: Seq(
-	//"org.anormcypher" %% "anormcypher" % "0.6.0"
-	//"org.springframework.data" % "spring-data-neo4j" % "3.2.2.RELEASE"
-	// Add here the specific dependencies for this module:
-	// jdbc,
-	// anorm
+  "com.typesafe.play" %% "play" % "2.3.6",
+  "com.typesafe.play" %% "play-java" % "2.3.6",
+  "com.sun.jersey" % "jersey-core" % "1.18.1",
+  // spring data stuff
+  "org.springframework" % "spring-context" % "4.1.1.RELEASE",
+  "org.springframework.data" % "spring-data-neo4j" % "3.2.1.RELEASE",
+  "org.springframework.data" % "spring-data-neo4j-rest" % "3.2.1.RELEASE",
+  // neo4j stuff
+  "org.neo4j" % "neo4j" % "2.1.5",
+  "org.neo4j" % "neo4j-kernel" % "2.1.5",
   cache,
   ws,
-  "com.github.tuxBurner" %% "play-neo4jplugin" % "1.4.1",
   "org.webjars" % "bootstrap" % "3.2.0"
 )

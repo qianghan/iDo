@@ -2,7 +2,7 @@ package controllers
 
 import play.api.mvc._
 import scala.concurrent.Future
-import neo4jplugin.{Neo4JPlugin, ServiceProvider}
+import neo4j.plugins.{Neo4JPlugin, ServiceProvider}
 
 object Neo4jTransactionAction extends ActionBuilder[Request] {
 

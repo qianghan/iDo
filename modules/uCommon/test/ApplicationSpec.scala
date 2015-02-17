@@ -14,23 +14,24 @@ import java.io.File
 @RunWith(classOf[JUnitRunner])
 class ApplicationSpec extends Specification {
 
-	val modulePath = new File("./modules/uCommon/")
-	
-	"Common Module" should {
+  val modulePath = new File("./modules/uCommon/")
 
-		"send 404 on a bad request" in {
-			running(FakeApplication(path = modulePath)) {
-				route(FakeRequest(GET, "/boum")) must beNone        
-			}
-		}
-    
-		"render the status page" in {
-			running(FakeApplication(path = modulePath)) {
-				val home = route(FakeRequest(GET, "/status")).get
-        
-				status(home) must equalTo(OK)
-				contentAsString(home) must contain ("success")
-			}
-		}
-	}
+  "uCommon Module" should {
+
+    "send 404 on a bad request" in {
+      running(FakeApplication(path = modulePath)) {
+        route(FakeRequest(GET, "/boum")) must beNone
+      }
+    }
+
+    "render the status page" in {
+      running(FakeApplication(path = modulePath)) {
+        val home = route(FakeRequest(GET, "/status")).get
+
+          status(home) must equalTo(OK)
+          contentAsString(home) must contain ("success")
+      }
+    }
+  }
+
 }
