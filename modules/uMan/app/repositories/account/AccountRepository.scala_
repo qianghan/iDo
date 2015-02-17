@@ -1,0 +1,45 @@
+package repositories.account
+
+import domain.account.Account
+import java.util.concurrent.ConcurrentHashMap
+import java.util.concurrent.atomic.AtomicLong
+
+trait AccountRepositoryComponent {
+  val accountRepository: AccountRepository
+  trait AccountRepository {
+    def createAccount(account: Account): Account
+    def updateAccount(account: Account)
+    def tryFindById(id: Long): Option[Account]
+    def delete(id: Long)
+  }
+}
+
+trait AccountRepositoryComponentImpl extends AccountRepositoryComponent {
+  override val accountRepository = new AccountRepositoryImpl
+
+  class AccountRepositoryImpl extends AccountRepository {
+
+    val accounts = new ConcurrentHashMap[Long, Account]
+    val idSequence = new AtomicLong(0)
+
+    override def createAccount(account: Account): Account = {
+      val newId = idSequence.incrementAndGet()
+      val createdAccount = account.copy(id = Option(newId))
+      accounts.put(newId, createdAccount)
+      createdAccount
+    }
+
+    override def updateAccount(account: Account) {
+      accounts.put(account.id.get, account)
+    }
+
+    override def tryFindById(id: Long): Option[Account] = {
+      Option(accounts.get(id))
+    }
+
+    override def delete(id: Long) {
+      accounts.remove(id)
+    }
+  }
+
+}

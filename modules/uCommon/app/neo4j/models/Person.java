@@ -28,6 +28,18 @@ public class Person extends AbstractNode {
   public Person(){
   }
 
+  public Person(String firstName,
+                String lastName,
+                int age,
+                String sex,
+                String telephone){
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+    this.sex = sex;
+    this.telephone = telephone;
+  }
+
   @Override
   public String toString() {
     return String.format("Person { firstName: '%s', lastName: '%s', email: '%s' }", 

@@ -1,0 +1,78 @@
+package controllers.uMan
+
+import play.api._
+import play.api.mvc._
+import play.api.libs.json._
+import play.api.libs.functional.syntax._
+import services.account.AccountServiceComponent
+import domain.account.Account
+
+trait UManController extends Controller {
+  self: AccountServiceComponent =>
+
+  implicit val accountReads = (__ \ "email").read[String]
+                                          .map(resource => AccountResource(resource))
+
+  implicit val accountWrites = new Writes[Account] {
+      override def writes(account: Account): JsValue = {
+        Json.obj(
+          "id" -> account.id,
+          "email" -> account.email
+        )
+      }
+  }
+
+  def createAccount = Action(parse.json) {request =>
+    unmarshalAccountResource(request, (resource: AccountResource) => {
+      val account = Account(Option.empty,
+                      resource.email)
+      accountService.createAccount(account)
+      Created
+    })
+  }
+
+  def updateAccount(id: Long) = Action(parse.json) {request =>
+    unmarshalAccountResource(request, (resource: AccountResource) => {
+      val account = Account(Option(id),
+                      resource.email)
+      accountService.updateAccount(account)
+      NoContent
+    })
+  }
+
+  def findUserById(id: Long) = Action {
+    val account = accountService.tryFindById(id)
+    if (account.isDefined) {
+      Ok(Json.toJson(account))
+    } else {
+      NotFound
+    }
+  }
+
+  def deleteAccount(id: Long) = Action {
+    accountService.delete(id)
+    NoContent
+  }
+
+  private def unmarshalAccountResource(request: Request[JsValue],
+    block: (AccountResource) => Result): Result = {
+      request.body.validate[AccountResource].fold(
+        valid = block,
+        invalid = (e => {
+          val error = e.mkString
+          Logger.error(error)
+          BadRequest(error)
+        })
+      )
+    }
+}
+
+case class AccountResource (val id: Long, 
+                            val firstName: String, 
+                            val lastName: String, 
+                            val age: Int, 
+                            val sex: String, 
+                            val telephone: String, 
+                            val company: String)
+
+

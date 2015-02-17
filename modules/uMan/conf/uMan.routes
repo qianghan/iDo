@@ -4,16 +4,10 @@
 
 # Home page
 GET     /                           controllers.uMan.Application.index
+GET     /accounts                   controllers.uMan.Application.retrieveAllAccounts
 POST    /account                    controllers.uMan.Application.createAccount
-GET     /accounts                   controllers.uMan.Application.retrieveAccounts
-GET     /account/:id                controllers.uMan.Application.retrieveAccount(id: Int)
-#POST    /aacount/:id                controllers.uMan.Application.updateAccount(id: Int)
-DELETE    /account/:id              controllers.uMan.Application.deleteAccount(id: Int)
-
+#GET     /account/:id                controllers.uMan.Application.retrieveAccountById(id: Int)
+#PUT     /aacount/:id                controllers.uMan.Application.updateAccount(id: Int)
+#DELETE  /account/:id                controllers.uMan.Application.deleteAccount(id: Int)
 #POST    /account/:id/status         controllers.uMan.Application.updateAccountStatus(id: Int)
-POST    /account/:id/auth           controllers.uMan.Application.authenticateAccount(id: Int)
-
-
-# Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.uMan.Assets.versioned(path="/public", file: Asset)
-
+#POST    /account/:id/auth           controllers.uMan.Application.authenticateAccount(id: Int)

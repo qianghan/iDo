@@ -1,0 +1,38 @@
+package services.account
+
+import domain.account.Account
+import repositories.account.AccountRepositoryComponent
+
+trait AccountServiceComponent {
+  val accountService: AccountService
+  trait AccountService {
+    def createAccount(account: Account): Account
+    def updateAccount(account: Account)
+    def tryFindById(id: Long): Option[Account]
+    def delete(id: Long)
+  }
+}
+
+trait AccountServiceComponentImpl extends AccountServiceComponent {
+  self: AccountRepositoryComponent =>
+
+    override val accountService = new AccountServiceImpl
+    class AccountServiceImpl extends AccountService {
+
+      override def createAccount(account: Account): Account = {
+        accountRepository.createAccount(account)
+      }
+
+      override def updateAccount(account: Account) {
+        accountRepository.updateAccount(account)
+      }
+
+      override def tryFindById(id: Long): Option[Account] = {
+        accountRepository.tryFindById(id)
+      }
+
+      override def delete(id: Long) {
+        accountRepository.delete(id)
+      }
+    }
+}
