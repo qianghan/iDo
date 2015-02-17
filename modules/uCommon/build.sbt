@@ -8,7 +8,6 @@ resolvers += "Local Maven Repository" at "file://"+Path.userHome.absolutePath+"/
 resolvers += "Neo4j Maven Repo" at "http://m2.neo4j.org/releases"
 
 libraryDependencies ++= Common.commonDependencies ++: Seq(
-	// Add here the specific dependencies for this module:
 	cache,
   	ws,
   	"com.github.tuxBurner" %% "play-neo4jplugin" % "1.4.1"

@@ -15,6 +15,8 @@ class LogServiceImpl extends LogService{
    //right now, it is hard coded with "uShipApp", and detail sources are in URL
    //better way is to have logbody has module name from client. But it might be overdo, as all logging on client has to pass 'module' name
    //module name can be derived from path though. 
+  
+  //When Authorization is added. Account should be replaced with the server side, and no need for client to provide. 
       
    override def saveLog(logbody: JsResult[LogBody]):Result = {
      

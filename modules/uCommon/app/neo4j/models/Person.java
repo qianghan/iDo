@@ -16,11 +16,12 @@ public class Person extends AbstractNode {
 	@Indexed
 	public String email;
 	
-	public String fname;
-	public String lname;
+	public String firstName;
+	public String lastName;
 	public int age;
 	public String sex;
 	public String tel;
+	public String password;
 	
 	@RelatedTo(type = "WORK_FOR", direction = Direction.OUTGOING)
 	public @Fetch Company com;
