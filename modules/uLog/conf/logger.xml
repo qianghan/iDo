@@ -5,13 +5,13 @@
   <appender name="FILE" class="ch.qos.logback.core.FileAppender">
      <file>${application.home}/logs/application.log</file>
      <encoder>
-       <pattern>%d{HH:mm:ss.SSS} - [%level] - from %logger in %thread %n%message%n%xException%n</pattern>
+       <pattern>from %logger >> [%level] @[%d{HH:mm:ss.SSS}]  -  in %thread %n%message%n%xException%n</pattern>
      </encoder>
    </appender>
 
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
-      <pattern>%coloredLevel %d{HH:mm:ss.SSS} %logger{36} - %message%n%xException{5}</pattern>
+      <pattern>%logger{36} >> %coloredLevel @[%d{HH:mm:ss.SSS}]  - %message%n%xException{5}</pattern>
     </encoder>
   </appender>
 

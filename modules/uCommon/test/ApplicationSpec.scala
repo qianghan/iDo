@@ -59,6 +59,7 @@ class ApplicationSpec extends Specification {
        val person2  = service.savePerson(person)
       
        person2.email mustEqual("test@machool.com")
+       
     }
     
   }
