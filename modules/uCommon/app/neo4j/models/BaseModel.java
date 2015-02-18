@@ -8,7 +8,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 @NodeEntity
-public class AbstractNode {
+public class BaseModel {
 
   @GraphId
   public Long id;

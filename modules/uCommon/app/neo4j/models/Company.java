@@ -11,7 +11,7 @@ import org.springframework.data.neo4j.annotation.NodeEntity;
 import org.springframework.data.neo4j.annotation.RelatedTo;
 
 @NodeEntity
-public class Company extends AbstractNode {
+public class Company extends BaseModel {
 
   @Indexed
   public String name;
@@ -25,7 +25,7 @@ public class Company extends AbstractNode {
 
   @Override
   public String toString() {
-    return String.format("Company{name='%s'}", name);
+    return String.format("Company { name='%s' }", name);
   }
 
 }

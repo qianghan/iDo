@@ -5,6 +5,7 @@ import org.junit.runner._
 import play.api.test._
 import play.api.test.Helpers._
 import java.io.File
+import play.api.libs.json.Json
 
 /**
 * Add your spec here.
@@ -13,35 +14,39 @@ import java.io.File
 */
 class ApplicationSpec extends Specification {
 
-	val modulePath = new File("./modules/uMan/")
-	
-	"uMan Module" should {
+  val modulePath = new File("./modules/uMan/")
 
-		"send 404 on a bad request" in {
-			running(FakeApplication(path = modulePath)) {
-				route(FakeRequest(GET, "/boum")) must beNone        
-			}
-		}
-    
-		"render the index page" in {
-			running(FakeApplication(path = modulePath)) {
-				val index = route(FakeRequest(GET, "/")).get
-        
-				status(index) must equalTo(OK)
-				contentType(index) must beSome.which(_ == "application/json")
-				contentAsString(index) must contain ("uMan")
-			}
-		}
+  "uMan Module" should {
+
+    "send 404 on a bad request" in {
+      running(FakeApplication(path = modulePath)) {
+        route(FakeRequest(GET, "/boum")) must beNone        
+      }
+    }
+
+    "render the index page" in {
+      running(FakeApplication(path = modulePath)) {
+        val index = route(FakeRequest(GET, "/")).get
+
+        status(index) must equalTo(OK)
+        contentType(index) must beSome.which(_ == "application/json")
+        contentAsString(index) must contain ("uMan")
+      }
+    }
 
     "create account" in {
-			running(FakeApplication(path = modulePath)) {
-				val index = route(FakeRequest(POST, "/account")).get
-        
-				status(index) must equalTo(OK)
-				contentType(index) must beSome.which(_ == "application/json")
-				contentAsString(index) must contain ("success")
-			}
-		}
+      running(FakeApplication(path = modulePath)) {
 
-	}
+        val jsonString = """{"firstName": "John", "lastName": "Doe"}"""
+        val json = Json.parse(jsonString)
+
+        val index = route(FakeRequest(POST, "/account", FakeHeaders(), json)).get
+
+        status(index) must equalTo(OK)
+        contentType(index) must beSome.which(_ == "application/json")
+        contentAsString(index) must contain ("success")
+      }
+    }
+
+  }
 }

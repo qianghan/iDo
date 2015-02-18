@@ -20,6 +20,8 @@ import java.util.List;
 import  play.api.Logger;
 import org.springframework.data.neo4j.conversion.Result;
 
+import com.google.common.collect.Lists;
+
 @Service
 public class UserManagementService{
 
@@ -30,34 +32,31 @@ public class UserManagementService{
   private CompanyRepository comRepository;
 
   public Person findByFirstName(String firstName){
-
-    Person person = personRepository.findBySchemaPropertyValue("firstName", firstName);
-
-    System.out.println("Found >>> " + person);
-
-    //List<Person> persons = getAllPersons();
-
-    //Person person=null;
-
-    //for (Person p: persons){
-      //System.out.println("[Debug] person's email is: " + p.email);
-      //if(p.firstName.equals(fname)) { 
-          //person=p;
-          //System.out.println("[Debug] person is found.");
-      //}
-    //}
-
-    return person;
+    ArrayList<Person> persons = Lists.newArrayList(personRepository.findByFirstName(firstName).iterator());
+    if (persons!=null && persons.size() > 0)
+      return persons.get(0);
+    else
+      return null;
   }
 
   public Person findByEmail(String email){
-    Person person = personRepository.findByPropertyValue("email", email);
-    System.out.println("Found >>> " + person);
-    return person;
+    return personRepository.findByEmail(email);
   }
 
   public List<Person> getAllPersons() {
     return new ArrayList<Person>(IteratorUtil.asCollection(personRepository.findAll()));
+  }
+
+  public long getNumberOfPerson() {
+    return personRepository.count();
+  }
+
+  public Person savePerson(Person person){
+    return personRepository.save(person);
+  }
+
+  public void delPerson(Person person){
+    personRepository.delete(person);
   }
 
 }
