@@ -11,7 +11,7 @@ resolvers ++= Seq(
   "tuxburner.github.io" at "http://tuxburner.github.io/repo"
 )
 
-scalaVersion := "2.10.4"
+//scalaVersion := "2.10.4"
 
 libraryDependencies ++= Common.commonDependencies ++: Seq(
   "com.typesafe.play" %% "play" % "2.3.6",

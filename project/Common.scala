@@ -3,9 +3,7 @@ import Keys._
 import play.PlayImport._
 
 object Common {
-
   def appName = "uDo"
-  def appVersion = "0.2.3"
 
   // Common settings for every project
   def settings(theName: String) = Seq(
@@ -33,9 +31,6 @@ object Common {
   val commonDependencies = Seq(
     cache,
     ws,
-    // Add here more common dependencies:
-    // jdbc,
-    // anorm
     "net.liftweb" %% "lift-json" % "2.6",
     "org.specs2" %% "specs2-core" % "2.3.12" % "test",
     "org.mockito" % "mockito-core" % "1.9.5" % "test"

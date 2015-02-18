@@ -8,17 +8,23 @@ import controllers._
 import neo4j.services._
 import neo4j.models._
 
+/**
+* uCommon does not need a controller in most cases. 
+* Other modules access uCommon using services.
+* Controller and routes are kept for testing purpose, and should be removed later. 
+*/
 object Application extends Controller {
 
 	def status = Neo4jTransactionAction {
 
-    def userManagementService: UserManagementService = Neo4JServiceProvider.get().userManagementService;
+    	def userManagementService: UserManagementService = Neo4JServiceProvider.get().userManagementService;
 
-    def allPersons: java.util.List[Person] = userManagementService.getAllPersons()
+    	def allPersons: java.util.List[Person] = userManagementService.getAllPersons()
 
-    //userManagementService.findByEmail("eson.paguia@machool.com");
+    	//userManagementService.findByEmail("eson.paguia@machool.com");
 
-    Ok(Json.obj("status" -> "success", "message"->"Hello! I'm uCommon! %d".format(allPersons.size())))
-  }
+		Ok(Json.obj("status" -> "success", "message"->"Hello! I'm uCommon! %d".format(allPersons.size())))
+
+	}
 
 }

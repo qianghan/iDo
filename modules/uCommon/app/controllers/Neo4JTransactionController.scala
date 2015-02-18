@@ -14,6 +14,9 @@ object Neo4jTransactionAction extends ActionBuilder[Request] {
 
 }
 
+/**
+* This class manages the Neo4J transaction on each request. 
+*/
 case class Neo4jTransactionAction[A](action: Action[A]) extends Action[A] {
 
   def apply(request: Request[A]): Future[Result] = {

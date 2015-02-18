@@ -3,7 +3,7 @@ CREATE (TELUS:_Company {name: 'TELUS'})
 CREATE (SAP:_Company {name: 'SAP'})
 
 CREATE (
-     Eson:_Person {
+     Eson:Person {
           firstName: 'Eson',
           lastName: 'Paguia',
           email: 'eson.paguia@machool.com',
@@ -15,7 +15,7 @@ CREATE (
 )
 
 CREATE (
-     Qiang:_Person {
+     Qiang:Person {
           firstName: 'Qiang',
           lastName: 'Han',
           email: 'qiang.han@machool.com',
@@ -27,7 +27,7 @@ CREATE (
 )
 
 CREATE (
-     Kamyar:_Person {
+     Kamyar:Person {
           firstName: 'Kamyar',
           lastName: 'Asadibeiky',
           email: 'kamyar.asadibeiky@machool.com',
@@ -39,7 +39,7 @@ CREATE (
 )
 
 CREATE (
-     Jorge:_Person {
+     Jorge:Person {
           firstName: 'Jorge',
           lastName: 'Whittenbury',
           email: 'jorge.whittenbury@machool.com',
@@ -56,3 +56,4 @@ CREATE
      (Kamyar)-[:WORK_FOR]->(Machool),
      (Jorge)-[:WORK_FOR]->(Machool)
 
+MATCH (n:Person) SET n:Person:_Person
