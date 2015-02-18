@@ -20,7 +20,7 @@ class ApplicationSpec extends Specification {
 
     "send 404 on a bad request" in {
       running(FakeApplication(path = modulePath)) {
-        route(FakeRequest(GET, "/boum")) must beNone        
+        route(FakeRequest(GET, "/boum")) must beNone
       }
     }
 
@@ -34,7 +34,9 @@ class ApplicationSpec extends Specification {
       }
     }
 
-    "create account" in {
+    // TODO: Refactor test scripts
+
+    "create person" in {
       running(FakeApplication(path = modulePath)) {
 
         val jsonString = """{"firstName": "John", "lastName": "Doe"}"""
@@ -42,9 +44,36 @@ class ApplicationSpec extends Specification {
 
         val index = route(FakeRequest(POST, "/account", FakeHeaders(), json)).get
 
+        status(index) must equalTo(CREATED)
+        //contentType(index) must beSome.which(_ == "application/json")
+        //contentAsString(index) must contain ("success")
+      }
+    }
+
+    "retrieve person" in {
+      running(FakeApplication(path = modulePath)) {
+
+        val index = route(FakeRequest(GET, "/account/0")).get
+
         status(index) must equalTo(OK)
-        contentType(index) must beSome.which(_ == "application/json")
-        contentAsString(index) must contain ("success")
+      }
+    }
+
+    "update person" in {
+      running(FakeApplication(path = modulePath)) {
+
+        val index = route(FakeRequest(PUT, "/account/0")).get
+
+        status(index) must equalTo(ACCEPTED)
+      }
+    }
+
+    "delete person" in {
+      running(FakeApplication(path = modulePath)) {
+
+        val index = route(FakeRequest(DELETE, "/account/0")).get
+
+        status(index) must equalTo(NO_CONTENT)
       }
     }
 

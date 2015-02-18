@@ -33,24 +33,27 @@ public class Person extends BaseModel {
                 int age,
                 String sex,
                 String telephone,
+                String company,
                 String email){
     this.firstName = firstName;
     this.lastName = lastName;
     this.age = age;
     this.sex = sex;
     this.telephone = telephone;
+    this.company = new Company(company);
     this.email = email;
   }
 
   @Override
   public String toString() {
-    return String.format("Person { firstName: '%s', lastName: '%s', age: %d, sex: '%s', telephone: '%s', email: '%s' }", 
+    return String.format("Person { firstName: '%s', lastName: '%s', age: %d, sex: '%s', telephone: '%s', email: '%s', company: '%s' }", 
                     this.firstName,
                     this.lastName,
                     this.age,
                     this.sex,
                     this.telephone,
-                    this.email
+                    this.email, 
+                    this.company.getName()
                 );
   }
 

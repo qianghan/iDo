@@ -4,10 +4,10 @@
 
 # Home page
 GET     /                           controllers.uMan.Application.index
-GET     /accounts                   controllers.uMan.Application.retrieveAllAccounts
-POST    /account                    controllers.uMan.Application.createAccount
-#GET     /account/:id                controllers.uMan.Application.retrieveAccountById(id: Int)
-#PUT     /aacount/:id                controllers.uMan.Application.updateAccount(id: Int)
-#DELETE  /account/:id                controllers.uMan.Application.deleteAccount(id: Int)
-#POST    /account/:id/status         controllers.uMan.Application.updateAccountStatus(id: Int)
-#POST    /account/:id/auth           controllers.uMan.Application.authenticateAccount(id: Int)
+GET     /accounts                   controllers.uMan.Application.retrieveAllPersons
+POST    /account                    controllers.uMan.Application.createPerson
+GET     /account/:id                controllers.uMan.Application.retrievePersonById(id: Long)
+PUT     /account/:id                controllers.uMan.Application.updatePerson(id: Long)
+DELETE  /account/:id                controllers.uMan.Application.deletePerson(id: Long)
+POST    /account/:id/status         controllers.uMan.Application.updatePersonStatus(id: Long)
+POST    /account/:id/auth           controllers.uMan.Application.authenticatePerson(id: Long)

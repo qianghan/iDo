@@ -7,5 +7,6 @@ libraryDependencies ++= Common.commonDependencies ++: Seq(
   anorm,
   cache,
   ws,
-  "org.mockito" % "mockito-core" % "1.9.5" % "test"
+  "org.mockito" % "mockito-core" % "1.9.5" % "test",
+  "com.google.code.gson" % "gson" % "1.7.1"
 )

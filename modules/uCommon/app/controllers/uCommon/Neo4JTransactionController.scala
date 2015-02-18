@@ -1,4 +1,4 @@
-package controllers
+package controllers.uCommon
 
 import play.api.mvc._
 import scala.concurrent.Future
