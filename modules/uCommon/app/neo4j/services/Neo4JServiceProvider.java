@@ -3,9 +3,11 @@ package neo4j.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import neo4jplugin.Neo4JPlugin;
 import neo4jplugin.ServiceProvider;
-import neo4j.repositories.PersonRepository;
+import neo4j.repositories.uman.PersonRepository;
+import neo4j.services.uman.UserManagementService;
 
 @Component
 public class Neo4JServiceProvider extends ServiceProvider {

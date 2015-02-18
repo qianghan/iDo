@@ -1,6 +1,7 @@
-package neo4j.repositories;
+package neo4j.repositories.uman;
 
-import neo4j.models.Company;
+import neo4j.models.uman.Company;
+
 import org.springframework.data.neo4j.repository.GraphRepository;
 
 

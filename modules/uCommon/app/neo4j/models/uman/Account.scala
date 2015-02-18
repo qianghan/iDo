@@ -1,7 +1,8 @@
-package models
+package neo4j.models.uman
 
 import net.liftweb.json._
 import play.api.libs.json._
+import play.api.libs.json.Json.toJsFieldJsValueWrapper
 
 case class Account (
 

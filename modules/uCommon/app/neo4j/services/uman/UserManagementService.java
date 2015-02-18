@@ -1,9 +1,9 @@
-package neo4j.services;
+package neo4j.services.uman;
 
 
-import neo4j.models.Person;
-import neo4j.repositories.PersonRepository;
-import neo4j.repositories.CompanyRepository;
+import neo4j.models.uman.Person;
+import neo4j.repositories.uman.CompanyRepository;
+import neo4j.repositories.uman.PersonRepository;
 
 import org.neo4j.graphalgo.GraphAlgoFactory;
 import org.neo4j.graphdb.Direction;
@@ -56,6 +56,10 @@ public class UserManagementService{
 	
 	public Person savePerson(Person person){
 		return personRepository.save(person);
+	}
+	
+	public void delPerson(Person person){
+		 personRepository.delete(person);
 	}
 
 }

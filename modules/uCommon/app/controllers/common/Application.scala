@@ -3,6 +3,11 @@ package controllers.uCommon
 import play.api._
 import play.api.mvc._
 import neo4j.services._
+
+//uCommon does not need a controller in most cases. 
+//other modules access uCommon using services
+//controller, and routes are kept for testing purpose, and should be removed later. 
+
 object Application extends Controller {
   
 	def test = Action {

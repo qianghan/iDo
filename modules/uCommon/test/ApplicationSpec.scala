@@ -6,9 +6,9 @@ import play.api.test._
 import play.api.test.Helpers._
 import java.io.File
 
-import  neo4j.services.UserManagementService
+import  neo4j.services.uman.UserManagementService
 import neo4j.services.Neo4JServiceProvider
-import neo4j.models.Person
+import neo4j.models.uman.Person
 
 /**
 * Add your spec here.
@@ -40,7 +40,7 @@ class ApplicationSpec extends Specification {
      "count persons " in {
        val service = Neo4JServiceProvider.get().umanService       
        val count  = service.getNumberOfPerson()
-       count mustEqual(4)
+       count mustEqual(5)
     }
      
       "find by First Name  " in {
@@ -57,8 +57,11 @@ class ApplicationSpec extends Specification {
        person.lastName = "last test"
        person.sex ="F"
        val person2  = service.savePerson(person)
-      
+       
+       service.delPerson(person2)
        person2.email mustEqual("test@machool.com")
+       
+       
        
     }
     

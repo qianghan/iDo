@@ -1,6 +1,6 @@
-package neo4j.repositories;
+package neo4j.repositories.uman;
 
-import neo4j.models.Person;
+import neo4j.models.uman.Person;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.neo4j.repository.GraphRepository;
