@@ -23,7 +23,7 @@ public class Person extends AbstractNode {
 	public int age;
 	public String sex;
 	public String tel;
-	public String password;
+
 	
 	@RelatedTo(type = "WORK_FOR", direction = Direction.OUTGOING)
 	public @Fetch Company com;
