@@ -3,7 +3,7 @@
 # ~~~~
 
 # Home page
-POST     /logger						controllers.Application.saveLog
+POST     /logger						controllers.ulog.Application.saveLog
 
 
 

@@ -1,6 +1,6 @@
-package services
+package services.ulog
 
-import domain.log.LogBody
+import models.log.LogBody
 import play.api.libs.json._
 import play.api.mvc._
 

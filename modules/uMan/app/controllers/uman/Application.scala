@@ -1,25 +1,24 @@
-package controllers.uMan
+package controllers.uman
 
-import models._
+
 import play.api._
 import play.api.mvc._
 import play.api.Play.current
-import play.api.libs.json.Json
+import play.api.libs.json._
+import play.api.libs.functional.syntax._
+import play.api.libs.json.Reads._ 
+
 import neo4j.models.uman.Account
 
 
 object Application extends Controller {
-
-	def index = Action { implicit request =>
-		Ok(Json.obj("code" -> "200", "message"->"Hello! I'm uMan!"))
-	}
-
+ 
+   
   def createAccount = Action { request =>
     request.body.asJson.map {
       json => 
-        val a = json.as[Account]
-        println(a)
-        Ok(Json.toJson((a)))
+       
+       Ok(Json.toJson("I works"))
     }.getOrElse {
       BadRequest("Incorrect json data")
     }
@@ -36,6 +35,17 @@ object Application extends Controller {
   def deleteAccount = Action { implicit request =>
     Ok(Json.toJson("true"))
   }
+  
+  /**
+   * signUp takes input of signUp json { account, contact, company}
+   * check repo to see if exists, if not save it and return success, with default authorized services, role
+   * otherwise, error will be returned
+   */
+  
+  def signUp = Action { request =>
+    
+    Ok(Json.toJson("true"))
+  }
 
   /**
   1. CRUD - account
@@ -44,3 +54,4 @@ object Application extends Controller {
   */
 
 }
+
