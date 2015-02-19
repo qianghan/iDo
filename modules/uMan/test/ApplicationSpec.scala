@@ -39,7 +39,8 @@ class ApplicationSpec extends Specification {
     "create person" in {
       running(FakeApplication(path = modulePath)) {
 
-        val jsonString = """{"firstName": "John", "lastName": "Doe"}"""
+        val jsonString = """{"firstName":"John","lastName":"Doe","age":50,"sex":"m","telephone":"1606954414","company":"Machool","email":"john.doe@machool.com"}"""
+        //val jsonString = """{"firstName": "John", "lastName": "Doe"}"""
         val json = Json.parse(jsonString)
 
         val index = route(FakeRequest(POST, "/account", FakeHeaders(), json)).get

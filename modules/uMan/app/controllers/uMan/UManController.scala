@@ -14,9 +14,8 @@ import com.google.gson.Gson
 trait UManController extends Controller {
 
   implicit val personReads = new Reads[Person] {
-    override def reads(js: JsValue): JsResult[Person] = {
-      JsSuccess(
-      new Person(
+    override def reads(js: JsValue): JsResult[Person] = JsSuccess(
+      new Person (
         (js \ "firstName").as[String],
         (js \ "lastName").as[String],
         (js \ "age").as[Int],
@@ -25,8 +24,7 @@ trait UManController extends Controller {
         (js \ "company").as[String],
         (js \ "email").as[String]
       )
-      )
-    }
+    )
   }
 
   implicit val personWrites = new Writes[Person] {
@@ -54,7 +52,8 @@ trait UManController extends Controller {
     Ok(Json.toJson(new Gson().toJson(allPersons)))
   }
 
-  def createPerson = Action { request =>
+  def createPerson = Action(parse.json) { request =>
+    val person = request.body.validate[Person]
     Created
   }
 

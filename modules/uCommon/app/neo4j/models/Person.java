@@ -13,9 +13,6 @@ import org.springframework.data.neo4j.annotation.RelatedTo;
 @NodeEntity
 public class Person extends BaseModel {
 
-  @Indexed
-  public String email;
-
   public String firstName;
   public String lastName;
   public int age;
@@ -24,6 +21,9 @@ public class Person extends BaseModel {
 
   @RelatedTo(type = "WORK_FOR", direction = Direction.OUTGOING)
   public @Fetch Company company;
+
+  @Indexed
+  public String email;
 
   public Person(){
   }
