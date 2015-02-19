@@ -3,25 +3,24 @@ package controllers.uman
 
 import play.api._
 import play.api.mvc._
-import play.api.Play.current
+import play.api.mvc.Results._
 import play.api.libs.json._
 import play.api.libs.functional.syntax._
 import play.api.libs.json.Reads._ 
 
-import neo4j.models.uman.Account
+import neo4j.models.AbstractNode
 
 
 object Application extends Controller {
- 
+     implicit val AccountReads: Reads[Account] = (
+      (JsPath \ "username").read[String] and  
+      (JsPath \ "password").read[String] 
+   )(Account.apply _)
    
-  def createAccount = Action { request =>
-    request.body.asJson.map {
-      json => 
-       
-       Ok(Json.toJson("I works"))
-    }.getOrElse {
-      BadRequest("Incorrect json data")
-    }
+  def createAccount = Action(BodyParsers.parse.json) { request =>
+    val acc = request.body.validate[Account]
+    Logger.debug(acc.toString())
+     Ok(Json.toJson("true"))
   }
 
   def retrieveAccount = Action { implicit request =>
@@ -55,3 +54,4 @@ object Application extends Controller {
 
 }
 
+case class Account(username:String, password:String) extends AbstractNode
