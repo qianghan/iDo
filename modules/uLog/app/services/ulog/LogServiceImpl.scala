@@ -1,4 +1,4 @@
-package services
+package services.ulog
 
 import play.api._
 import play.api.mvc._
@@ -7,7 +7,7 @@ import play.api.libs.json._
 import play.api.libs.functional.syntax._
 import play.api.libs.json.Reads._ 
 import play.api.Logger
-import domain.log.LogBody
+import models.log.LogBody
 
 class LogServiceImpl extends LogService{
 
