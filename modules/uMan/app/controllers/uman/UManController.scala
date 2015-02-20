@@ -52,6 +52,8 @@ trait UManController extends Controller {
 
     Ok(Json.toJson(new Gson().toJson(allPersons)))
   }
+  
+ 
 
   def createPerson = Action(parse.json) { request =>
     val person = request.body.validate[Person]

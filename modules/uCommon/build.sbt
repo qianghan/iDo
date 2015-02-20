@@ -18,7 +18,7 @@ libraryDependencies ++= Common.commonDependencies ++: Seq(
   "com.typesafe.play" %% "play-java" % "2.3.6",
   "com.sun.jersey" % "jersey-core" % "1.18.1",
   // spring data stuff
-  "org.springframework" % "spring-context" % "4.1.1.RErLEASE",
+  "org.springframework" % "spring-context" % "4.1.1.RELEASE",
   "org.springframework.data" % "spring-data-neo4j" % "3.2.1.RELEASE",
   "org.springframework.data" % "spring-data-neo4j-rest" % "3.2.1.RELEASE",
   // neo4j stuff

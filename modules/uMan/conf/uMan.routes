@@ -4,8 +4,7 @@
 
 
 # signup API
-POST 	/signup		  controllers.uman.Application.signUp
+POST 	/index		  controllers.uman.Application.index 
 
-POST    /account      controllers.uman.Application.createAccount
 
 

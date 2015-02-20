@@ -1,4 +1,4 @@
-RawBlameHistory   
+  
 package services.ulog
 
 import models.ulog.LogBody
