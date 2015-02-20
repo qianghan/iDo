@@ -3,4 +3,4 @@
 # ~~~~
 
 # These are common routes that you may want all services to respond to.
-GET		/status					controllers.uCommon.Application.status
+GET   /status             controllers.ucommon.Application.status

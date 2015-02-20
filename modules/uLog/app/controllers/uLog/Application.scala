@@ -1,4 +1,4 @@
-package controllers.uLog
+package controllers.ulog
 
 import models._
 import play.api._
@@ -7,8 +7,8 @@ import play.api.mvc.Results._
 import play.api.libs.json._
 import play.api.libs.functional.syntax._
 import play.api.libs.json.Reads._ 
-import services.uLog.LogServiceImpl
-import models.uLog.LogBody
+import services.ulog.LogServiceImpl
+import models.ulog.LogBody
 
 object Application extends Controller {
 

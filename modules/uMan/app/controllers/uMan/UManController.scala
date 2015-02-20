@@ -5,7 +5,7 @@ import play.api.mvc._
 import play.api.libs.json._
 import play.api.libs.functional.syntax._
 
-import controllers.uCommon._
+import controllers.ucommon._
 import neo4j.services._
 import neo4j.models._
 

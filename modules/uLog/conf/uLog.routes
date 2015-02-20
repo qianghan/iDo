@@ -3,4 +3,4 @@
 # ~~~~
 
 # Home page
-POST     /logger            controllers.uLog.Application.saveLog
+POST     /logger            controllers.ulog.Application.saveLog

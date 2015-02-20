@@ -1,4 +1,4 @@
-package models.uLog
+package models.ulog
 
 case class LogBody(source: String,
                     msg: String,

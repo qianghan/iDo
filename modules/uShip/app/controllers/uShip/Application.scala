@@ -1,4 +1,4 @@
-package controllers.uShip
+package controllers.uship
 
 import models._
 import play.api._
