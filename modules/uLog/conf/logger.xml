@@ -17,8 +17,8 @@
 
   <logger name="play" level="INFO" />
   <logger name="uShipApp" level="DEBUG" >
-  	<appender-ref ref="STDOUT" />
-  	<appender-ref ref="FILE" />
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="FILE" />
   </logger>
 
   <!-- Off these ones as they are annoying, and anyway we manage configuration ourself -->

@@ -2,8 +2,10 @@
 # This file defines uMan application routes (Higher priority routes first)
 # ~~~~
 
+
 # signup API
 POST 	/signup		  controllers.uman.Application.signUp
 
 POST    /account      controllers.uman.Application.createAccount
+
 

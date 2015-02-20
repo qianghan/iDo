@@ -4,6 +4,7 @@ package neo4j.services.uman;
 import neo4j.models.uman.Person;
 import neo4j.repositories.uman.CompanyRepository;
 import neo4j.repositories.uman.PersonRepository;
+import neo4j.services.Neo4JServiceProvider;
 
 import org.neo4j.graphalgo.GraphAlgoFactory;
 import org.neo4j.graphdb.Direction;
@@ -34,14 +35,18 @@ public class UserManagementService{
 	@Autowired
 	private CompanyRepository comRepository;
 	
-	public ArrayList<Person> findByFirstName(String firstName){
+	public static UserManagementService self(){
+		return Neo4JServiceProvider.get().userManagementService;
+	} 
 	
-	   ArrayList<Person> persons = Lists.newArrayList(personRepository.findByFirstName(firstName).iterator());
-	   return persons;
+	
+	public ArrayList<Person> findByFirstName(String firstName){
+		
+		   ArrayList<Person> persons = Lists.newArrayList(personRepository.findByFirstName(firstName).iterator());
+		   return persons;
 	}
 	
 	public Person findByEmail(String email){
-	 //return personRepository.findBySchemaPropertyValue("email", email);
 		return personRepository.findByEmail(email);
 
 	}

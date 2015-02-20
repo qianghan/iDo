@@ -2,25 +2,21 @@ package neo4j.models;
 
 import java.util.Set;
 
-
-
 import org.springframework.data.neo4j.annotation.GraphId;
 import org.springframework.data.neo4j.annotation.NodeEntity;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
-
 @NodeEntity
-public class AbstractNode {
+public class BaseModel {
 
-	@GraphId
-	public Long id;
+  @GraphId
+  public Long id;
 
-    @CreatedDate
-    public Long createdDate;
+  @CreatedDate
+  public Long createdDate;
 
-    @LastModifiedDate
-    public Long lastModifiedDate;
-
+  @LastModifiedDate
+  public Long lastModifiedDate;
 
 }

@@ -11,5 +11,6 @@ lazy val uLog = (project in file("modules/uLog")).enablePlugins(PlayScala)
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala).aggregate(uCommon, uMan, uShip, uLog).dependsOn(uCommon, uMan, uShip,uLog)
 
+//lazy val root = (project in file(".")).enablePlugins(PlayScala).aggregate(uCommon, uMan, uShip).dependsOn(uCommon, uMan, uShip)
 
 libraryDependencies ++= Common.commonDependencies

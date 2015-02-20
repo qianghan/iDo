@@ -3,4 +3,6 @@
 # ~~~~
 
 # These are common routes that you may want all services to respond to.
-GET		/test					controllers.uCommon.Application.test
+
+GET		/test					controllers.ucommon.Application.test
+

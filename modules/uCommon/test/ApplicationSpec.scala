@@ -14,9 +14,11 @@ import neo4j.models.uman.Person
 * Add your spec here.
 * You can mock out a whole application including requests, plugins etc.
 * For more information, consult the wiki.
+* Using the shipping domain model cyp as the sample data
 */
 @RunWith(classOf[JUnitRunner])
 class ApplicationSpec extends Specification {
+
 
 	val modulePath = new File("./modules/uCommon/")
 	
@@ -32,26 +34,26 @@ class ApplicationSpec extends Specification {
   
   "User Management Service " should {
     "find by email" in {
-       val service = Neo4JServiceProvider.get().umanService       
-       val person2  = service.findByEmail("qiang.han@machool.com")
+       val service = UserManagementService.self()       
+       val person2  = service.findByEmail("qiang.han@sap.com")
        person2.firstName mustEqual("Qiang")
     }
    
      "count persons " in {
-       val service = Neo4JServiceProvider.get().umanService       
+       val service =UserManagementService.self()        
        val count  = service.getNumberOfPerson()
-       count mustEqual(5)
+       count mustEqual(10)
     }
      
       "find by First Name  " in {
-       val service = Neo4JServiceProvider.get().umanService       
+       val service = UserManagementService.self()         
        val person  = service.findByFirstName("Qiang")
        person.size() mustEqual(1)
-       person.get(0).email mustEqual("qiang.han@machool.com")
+       person.get(0).email mustEqual("qiang.han@sap.com")
     }
       
        "save a person  " in {
-       val service = Neo4JServiceProvider.get().umanService 
+       val service = UserManagementService.self()   
        val person = new Person("test@machool.com")
        person.firstName = "test"
        person.lastName = "last test"
@@ -60,8 +62,7 @@ class ApplicationSpec extends Specification {
        
        service.delPerson(person2)
        person2.email mustEqual("test@machool.com")
-       
-       
+
        
     }
     

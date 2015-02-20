@@ -4,6 +4,3 @@
 
 # Home page
 POST     /logger						controllers.ulog.Application.saveLog
-
-
-

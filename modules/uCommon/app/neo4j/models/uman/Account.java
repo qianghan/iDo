@@ -8,13 +8,13 @@ import org.springframework.data.neo4j.annotation.Indexed;
 import org.springframework.data.neo4j.annotation.NodeEntity;
 import org.springframework.data.neo4j.annotation.RelatedTo;
 
-import neo4j.models.AbstractNode;
+import neo4j.models.BaseModel;
 
 import java.util.List;
 
 
 @NodeEntity
-public class Account extends AbstractNode{
+public class Account extends BaseModel{
 	@Indexed
 	public String username;
 	
@@ -24,7 +24,7 @@ public class Account extends AbstractNode{
 	
 	@Fetch
 	@RelatedTo(type="HAS_ACCOUNT_OF", direction=Direction.INCOMING)
-    public AbstractNode owner;
+    public BaseModel owner;
 	
 	public Account(String username, String password){
 		this.username = username;

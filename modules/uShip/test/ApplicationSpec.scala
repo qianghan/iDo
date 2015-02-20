@@ -28,7 +28,7 @@ class ApplicationSpec extends Specification {
 				val index = route(FakeRequest(GET, "/")).get
         
 				status(index) must equalTo(OK)
-				contentType(index) must beSome.which(_ == "text/html")
+				contentType(index) must beSome.which(_ == "application/json")
 				contentAsString(index) must contain ("uShip")
 			}
 		}

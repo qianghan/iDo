@@ -1,0 +1,1 @@
+MATCH (a:Person),(m:Company) OPTIONAL MATCH (a)-[r1]-(), (m)-[r2]-() DELETE a,r1,m,r2
