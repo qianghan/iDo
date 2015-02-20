@@ -3,11 +3,11 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.uMan.Application.index
-GET     /accounts                   controllers.uMan.Application.retrieveAllPersons
-POST    /account                    controllers.uMan.Application.createPerson
-GET     /account/:id                controllers.uMan.Application.retrievePersonById(id: Long)
-PUT     /account/:id                controllers.uMan.Application.updatePerson(id: Long)
-DELETE  /account/:id                controllers.uMan.Application.deletePerson(id: Long)
-POST    /account/:id/status         controllers.uMan.Application.updatePersonStatus(id: Long)
-POST    /account/:id/auth           controllers.uMan.Application.authenticatePerson(id: Long)
+GET     /                           controllers.uman.Application.index
+GET     /accounts                   controllers.uman.Application.retrieveAllPersons
+POST    /account                    controllers.uman.Application.createPerson
+GET     /account/:id                controllers.uman.Application.retrievePersonById(id: Long)
+PUT     /account/:id                controllers.uman.Application.updatePerson(id: Long)
+DELETE  /account/:id                controllers.uman.Application.deletePerson(id: Long)
+POST    /account/:id/status         controllers.uman.Application.updatePersonStatus(id: Long)
+POST    /account/:id/auth           controllers.uman.Application.authenticatePerson(id: Long)

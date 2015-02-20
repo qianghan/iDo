@@ -1,3 +1,0 @@
-package domain.account
-
-case class Account(val id: Option[Long], val email: String)

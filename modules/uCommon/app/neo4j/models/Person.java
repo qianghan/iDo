@@ -18,6 +18,7 @@ public class Person extends BaseModel {
   public int age;
   public String sex;
   public String telephone;
+  public String password;
 
   @RelatedTo(type = "WORK_FOR", direction = Direction.OUTGOING)
   public @Fetch Company company;

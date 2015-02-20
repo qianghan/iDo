@@ -1,4 +1,4 @@
-package controllers.uMan
+package controllers.uman
 
 import play.api._
 import play.api.mvc._
