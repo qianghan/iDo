@@ -8,7 +8,7 @@ import play.api.libs.json._
 import play.api.libs.functional.syntax._
 import play.api.libs.json.Reads._ 
 
-import neo4j.models.AbstractNode
+import models.uman._
 
 
 object Application extends Controller {
@@ -54,4 +54,4 @@ object Application extends Controller {
 
 }
 
-case class Account(username:String, password:String) extends AbstractNode
+
