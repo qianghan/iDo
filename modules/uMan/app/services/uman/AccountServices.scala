@@ -1,12 +1,11 @@
 package services.uman
 
 import models.uman._
+import neo4j.models.uman.Account
 
+trait AccountServices {
+    def signup(signUp: SignUp): User 
 
-//delegate saving to neo4j.services.UserManagementServices
+    def login(account: Account): User 
 
-abstract class AccountServices extends LoginService with SignupService {
-  override def signup(signup:SignUp):User ={
-    null
-  }
 }

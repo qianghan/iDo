@@ -18,7 +18,7 @@ public class Company extends BaseModel {
 
 
 	@Indexed
-	public Long id;
+	public Long companyId;
 	
 	public String name;
 	
@@ -27,15 +27,23 @@ public class Company extends BaseModel {
 	public String fax;
 	public String email;
 	
+	@Fetch
+	@RelatedTo(type="locate_at", direction=Direction.OUTGOING)
+	public Address address;
 	
 	@Fetch
-	@RelatedTo(type="HAS_ACCOUNT_OF", direction=Direction.OUTGOING)
+	@RelatedTo(type="has_account_of", direction=Direction.OUTGOING)
 	public Account account;
 	
 	
 	@Fetch
-	@RelatedTo(type="CONTACT_OF", direction=Direction.INCOMING)
+	@RelatedTo(type="contact_of", direction=Direction.INCOMING)
 	public Person contact;
+	
+	
+	@Fetch
+	@RelatedTo(type="is_consumer_of", direction=Direction.OUTGOING)
+	public Set<Service> services;
 	
 	/**
 	 * no-arg constructor is required by neo4j spring data
@@ -44,10 +52,28 @@ public class Company extends BaseModel {
 		
 	}
 	public Company(String name) {
-	  
-		//internal id needs to b
+	    
+	//internal id needs to be
+		
 		this.name = name;
 	}
+	
+	public Company(Long companyId,
+					String name,
+					String no_employees,
+					String tel,
+					String fax,
+					String email,
+					Address address) {
+	    
+			this.companyId = companyId;
+			this.name = name;
+			this.no_employees = no_employees;
+			this.tel = tel;
+			this.fax = fax;
+			this.email = email;
+			this.address = address;
+		}
 
 	
 	@Override

@@ -24,15 +24,7 @@ class ApplicationSpec extends Specification {
       }
     }
 
-    "render the index page" in {
-      running(FakeApplication(path = modulePath)) {
-        val index = route(FakeRequest(GET, "/")).get
-
-        status(index) must equalTo(OK)
-        contentType(index) must beSome.which(_ == "application/json")
-        contentAsString(index) must contain ("uMan")
-      }
-    }
+   /*
 
     // TODO: Refactor test scripts
 
@@ -76,7 +68,6 @@ class ApplicationSpec extends Specification {
 
         status(index) must equalTo(NO_CONTENT)
       }
-    }
-
+    }*/
   }
 }

@@ -4,7 +4,9 @@
 
 
 # signup API
-POST 	/index		  controllers.uman.Application.index 
+POST 	/signup		  controllers.uman.UManController.signup 
+
+GET 	/login		  controllers.uman.UManController.login 
 
 
 

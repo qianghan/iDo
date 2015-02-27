@@ -7,8 +7,6 @@ import org.springframework.data.neo4j.annotation.Indexed;
 @NodeEntity
 public class Address extends BaseModel {
 	
-	@Indexed
-	public Long id;
 	
 	public String unit;
 	public String line1;
@@ -17,10 +15,27 @@ public class Address extends BaseModel {
 	public String province;
 	public String country;
 	
-	public String hashcode;
+	public String postcode;
 	
 	public Address(){
 		
+	}
+	
+	public Address ( String unit,
+						 String line1,
+						 String line2,
+						 String city,
+						 String province,
+						 String country, 
+						 String postcode
+	){
+		this.unit = unit;
+		this.line1 = line1;
+		this.line2 = line2;
+		this.city = city;
+		this.province = province;
+		this.country = country;
+		this.postcode = postcode;
 	}
 
 }

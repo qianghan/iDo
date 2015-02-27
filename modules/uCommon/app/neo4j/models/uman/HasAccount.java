@@ -5,7 +5,7 @@ import org.springframework.data.neo4j.annotation.RelationshipEntity;
 import org.springframework.data.neo4j.annotation.StartNode;
 import org.springframework.data.neo4j.annotation.EndNode;
 
-@RelationshipEntity(type="HAS_ACCOUNT_OF")
+@RelationshipEntity(type="has_account_of")
 public class HasAccount extends BaseModel{
 	@StartNode 
 	public BaseModel owner;

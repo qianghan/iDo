@@ -24,11 +24,14 @@ public class Person extends BaseModel {
 	public String sex;
 	public String telephone;
 
-
+	@Fetch
+	@RelatedTo(type="contact_of", direction = Direction.OUTGOING)
+	public Company contact;
  
-
-	@RelatedTo(type = "WORK_FOR", direction = Direction.OUTGOING)
-	public @Fetch Company company;
+	@Fetch
+	@RelatedTo(type = "work_for", direction = Direction.OUTGOING)
+	public  Company company;
+	
 	
 	public Person(){
 		
@@ -44,14 +47,12 @@ public class Person extends BaseModel {
                 int age,
                 String sex,
                 String telephone,
-                String company,
                 String email){
     this.firstName = firstName;
     this.lastName = lastName;
     this.age = age;
     this.sex = sex;
     this.telephone = telephone;
-    this.company = new Company(company);
     this.email = email;
   }
 

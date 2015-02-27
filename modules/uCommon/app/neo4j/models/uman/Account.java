@@ -10,7 +10,7 @@ import org.springframework.data.neo4j.annotation.RelatedTo;
 
 import neo4j.models.BaseModel;
 
-import java.util.List;
+import java.util.Set;
 
 
 @NodeEntity
@@ -20,15 +20,34 @@ public class Account extends BaseModel{
 	
 	public String password;
 	
-	public List<String> tokens;
+	public String token;
 	
 	@Fetch
-	@RelatedTo(type="HAS_ACCOUNT_OF", direction=Direction.INCOMING)
+	@RelatedTo(type="has_account_of", direction=Direction.INCOMING)
     public BaseModel owner;
+	
+	@Fetch
+	@RelatedTo(type="is_member_of", direction=Direction.OUTGOING)
+	public Set<Role> roles;
 	
 	public Account(String username, String password){
 		this.username = username;
 		this.password = password;
+	}
+	
+	public Account(){
+		
+	}
+	
+	public Account(	String username, 
+					String password,
+					Set<Role> roles){
+		
+		this.username = username;
+		this.password = password;
+
+		this.roles = roles;
+		
 	}
 
 }

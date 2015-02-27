@@ -2,49 +2,99 @@ package controllers.uman
 
 import play.api._
 import play.api.mvc._
+import play.mvc.Http
 import play.api.libs.json._
 import play.api.libs.functional.syntax._
 
 
 import neo4j.services._
 import neo4j.models.uman._
+import neo4j.models.uman.Account 
 import neo4j.services.uman.UserManagementService
+import scala.collection.JavaConverters._
+import models.uman.SignUp
+import models.uman.User
+import models.uman.StatusCode
+import play.api.mvc.Results._
 
-import com.google.gson.Gson
+import services.uman.impl._
+import services.uman._
+import services.ServiceFactory
 
-trait UManController extends Controller {
 
-  implicit val personReads = new Reads[Person] {
-    override def reads(js: JsValue): JsResult[Person] = JsSuccess(
-      new Person (
-        (js \ "firstName").as[String],
-        (js \ "lastName").as[String],
-        (js \ "age").as[Int],
-        (js \ "sex").as[String],
-        (js \ "telephone").as[String],
-        (js \ "company").as[String],
-        (js \ "email").as[String]
-      )
+object UManController extends Controller {
+  
+  val SERVICE_PROVIDER =  ServiceFactory.SERVICE_UMAN_NEO4J 
+  val logger: Logger = Logger("uManController")
+
+  implicit val signUpFormat = Formats.signupFormat  
+  implicit val accountFormat = Formats.accountFormat
+  implicit val userWrites = Formats.userWrites
+   /**
+    * SignUp Action
+    */
+  
+  def signup = Action(BodyParsers.parse.json) {request =>
+     val signUp = request.body.validate[SignUp]
+     
+     logger.info("Sign up Action is triggered ....")
+     
+     signUp.fold(
+        errors=>{
+          logger.error("Bad Request: " + errors)
+          BadRequest(Json.obj("status" ->"Error", "message" -> JsError.toFlatJson(errors)))
+        },
+        value => {
+          val service = AccountServicesFactory.apply(SERVICE_PROVIDER)
+          logger.debug("Service provider is >>>" + SERVICE_PROVIDER)
+          
+          val user = service.signup(value)
+          
+          processUser(user)
+        }
+     )
+  }
+  
+  def login = Action(BodyParsers.parse.json) {request =>
+    val account = request.body.validate[Account]
+    logger.info("Login up Action is triggered ....")
+     
+    account.fold(
+        errors => {
+          logger.error("Bad Request: " + errors)
+          BadRequest(Json.obj("status" ->"Error", "message" -> JsError.toFlatJson(errors)))
+        },
+        value => {
+          val service = AccountServicesFactory.apply(SERVICE_PROVIDER)
+          logger.debug("Service provider is >>>" + SERVICE_PROVIDER)
+          
+          val user = service.login(value)
+          processUser(user)
+        }
     )
   }
 
-  implicit val personWrites = new Writes[Person] {
-      override def writes(person: Person): JsValue = {
-        Json.obj(
-          //"id" -> person.id,
-          "firstName" -> person.getFirstName(),
-          "lastName" -> person.getLastName(),
-          "age" -> person.getAge(),
-          "sex" -> person.getSex(),
-          "telephone" -> person.getTelephone(),
-          "company" -> person.getCompany().getName(),
-          "email" -> person.getEmail()
-        )
-      }
-  }
 
+  def processUser(user:User):Result = {
+  //check user's status code
+     val status = user.status.status
+            
+    val result = status match {
+       case Http.Status.OK => Ok(Json.toJson(user))
+       case Http.Status.CONFLICT => Conflict(Json.toJson(user))
+       case Http.Status.FORBIDDEN => Forbidden(Json.toJson(user))
+       case Http.Status.INTERNAL_SERVER_ERROR => InternalServerError(Json.toJson(user))
+       case Http.Status.NOT_FOUND => NotFound(Json.toJson(user))
+       case _ => BadRequest(Json.toJson(user))
+              
+    }
+            
+    logger.debug("process user result>>> " + Json.toJson(user).toString() )
+            
+    result
+}
   // TODO: Refactor utility methods
-
+/*
   def retrieveAllPersons = Action {
 
     def userManagementService: UserManagementService = UserManagementService.self();
@@ -79,5 +129,6 @@ trait UManController extends Controller {
   def authenticatePerson(id: Long) = Action {
     NoContent
   }
-
+  * */
+  
 }
